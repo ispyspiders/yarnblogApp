@@ -1,5 +1,5 @@
 
-const HomePage = () => {
+const BlogPage = () => {
     return (
       <div>
         <h1>Blogg</h1>
@@ -8,4 +8,4 @@ const HomePage = () => {
     )
   }
   
-  export default HomePage
+  export default BlogPage

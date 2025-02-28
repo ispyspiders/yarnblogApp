@@ -1,14 +1,16 @@
 import Header from "./Header"
+import MainNav from "./MainNav"
 import { Outlet } from "react-router-dom"
 
 const Layout = () => {
     return (
         <>
             <Header />
+            <MainNav />
             <main>
                 <Outlet />
             </main>
-            <footer>Moment 3 i kursen Fördjupad frontendutveckling skapad av <a href="mailto:kacl1200@student.miun.se">Kajsa Classon</a>, VT25.</footer>
+            <footer className="bg-blue-deep text-light text-center text-sm p-2">Moment 3 i kursen Fördjupad frontendutveckling skapad av <a className="text-dust-light hover:underline" href="mailto:kacl1200@student.miun.se">Kajsa Classon</a>, VT25.</footer>
         </>
     )
 }
