@@ -6,3 +6,8 @@ body{
     background-color: #F6F0ED;
     color: #10120A;
 }
+
+:focus {
+    border: 2px solid #00CC00;
+    outline: #00CC00;
+}
