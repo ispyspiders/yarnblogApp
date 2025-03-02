@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Post } from '../types/post.types';
 import { Link } from "react-router-dom";
+import { SpinnerGap } from '@phosphor-icons/react';
 
 interface PostTableProps {
     posts: Post[],
@@ -8,7 +9,7 @@ interface PostTableProps {
 }
 
 const PostTable = ({ posts, onDelete }: PostTableProps) => {
-    const [deleteing, setDeleting] = useState(false);
+    const [deleting, setDeleting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const handleDelete = async (postId: number) => {
@@ -64,7 +65,10 @@ const PostTable = ({ posts, onDelete }: PostTableProps) => {
                                         <td className="p-2">{new Date(post.created_at).toLocaleDateString('sv-SE')}</td>
                                         <td className="p-2">{post.category.charAt(0).toUpperCase() + post.category.slice(1)}</td>
                                         <td className="p-2 mx-auto text-center"><Link to={`/edit/${post.id}`} className='font-semibold me-2 text-dust-deep hover:underline'>Uppdatera</Link> |
-                                            <button onClick={() => handleDelete(post.id)} className='font-semibold ms-2 text-red-800 hover:underline'>Radera</button></td>
+                                            {deleting ? <span>Raderar... <SpinnerGap className="animate-spin ms-4"/></span> :
+                                                <button onClick={() => handleDelete(post.id)} className='font-semibold ms-2 text-red-800 hover:underline'>Radera</button>
+                                            }
+                                        </td>
                                     </tr>
                                 ))}
 
