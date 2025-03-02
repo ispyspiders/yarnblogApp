@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     background-color: #F6F0ED;
     color: #10120A;
 }
@@ -10,4 +10,21 @@ body{
 :focus {
     border: 2px solid #00CC00;
     outline: #00CC00;
+}
+
+h1 {
+    @apply text-blue-deep text-xl font-bold;
+}
+
+h2 {
+    @apply text-blue-deep text-lg font-bold;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        @apply text-2xl
+    }
+    h2 {
+        @apply text-xl
+    }
 }
