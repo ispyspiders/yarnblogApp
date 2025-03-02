@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Post } from '../types/post.types';
 import { Link } from "react-router-dom";
 import { SpinnerGap } from '@phosphor-icons/react';

@@ -1,4 +1,4 @@
-import { Divide, Plus, SpinnerGap, WarningCircle } from "@phosphor-icons/react";
+import {  Plus, SpinnerGap, WarningCircle } from "@phosphor-icons/react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import PostTable from "../components/PostTable";
