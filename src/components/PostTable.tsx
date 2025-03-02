@@ -64,7 +64,8 @@ const PostTable = ({ posts, onDelete }: PostTableProps) => {
                                         <td className="p-2 font-semibold">{post.title}</td>
                                         <td className="p-2">{new Date(post.created_at).toLocaleDateString('sv-SE')}</td>
                                         <td className="p-2">{post.category.charAt(0).toUpperCase() + post.category.slice(1)}</td>
-                                        <td className="p-2 mx-auto text-center"><Link to={`/edit/${post.id}`} className='font-semibold me-2 text-dust-deep hover:underline'>Uppdatera</Link> |
+                                        <td className="p-2 mx-auto text-center">
+                                            <Link to={`/edit/${post.id}`} className='font-semibold me-2 text-dust-deep hover:underline'>Uppdatera</Link> |
                                             {deleting ? <span>Raderar... <SpinnerGap className="animate-spin ms-4"/></span> :
                                                 <button onClick={() => handleDelete(post.id)} className='font-semibold ms-2 text-red-800 hover:underline'>Radera</button>
                                             }

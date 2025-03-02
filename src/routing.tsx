@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NewPostPage from "./pages/NewPostPage";
+import EditPostPage from "./pages/EditPostPage";
 
 const router = createBrowserRouter([
     {
@@ -42,10 +43,10 @@ const router = createBrowserRouter([
                 )
             },
             {
-                path: "/edit/{id}",
+                path: "/edit/:id",
                 element: (
                     <ProtectedRoute>
-                        <NewPostPage />
+                        <EditPostPage />
                     </ProtectedRoute>
                 )
             },
