@@ -1,10 +1,8 @@
-import { FloppyDisk, ShareFat, SpinnerGap, WarningCircle } from "@phosphor-icons/react";
+import { FloppyDisk, SpinnerGap, WarningCircle } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
-import { Post } from '../types/post.types';
 import { url } from "../types/auth.types";
-import { useAuth } from "../context/AuthContext";
 
 interface FormData {
     title?: string,
@@ -29,14 +27,11 @@ const categoryOptions = ["Virkning", "Stickning", "Tovning", "Vävning", "Broder
 
 const EditPostPage = () => {
     const { id } = useParams<{ id: string }>();
-    const [post, setPost] = useState<Post | null>(null);
     const [formData, setFormData] = useState<FormData>({ title: "", content: "", category: "" });
     const [errors, setErrors] = useState<ErrorsData>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [loading, setLoading] = useState(false);
     const [redirect, setRedirect] = useState(false);
-
-    const { user } = useAuth();
 
     useEffect(() => {
         getPost();
@@ -58,7 +53,7 @@ const EditPostPage = () => {
                 throw Error;
             }
             const data = await resp.json();
-            setPost(data);
+            // setPost(data);
             setFormData({ title: data.title, content: data.content, category: data.category })
             setErrors({});
         } catch (error) {
@@ -96,7 +91,7 @@ const EditPostPage = () => {
                     throw new Error(`API-anropet misslyckades med status: ${resp.status}`);
                 }
 
-                const data = await resp.json();
+                await resp.json();
                 setRedirect(true);
             } catch (error) {
                 setErrors({ message: "Något gick fel vid API-anropet: " + error });
@@ -123,6 +118,10 @@ const EditPostPage = () => {
     return (
         <div className="p-4 pt-8 md:p-16">
             <h1>Redigera inlägg</h1>
+            
+            {loading && <div className="flex items-center col-span-full bg-white p-4 rounded mt-4 drop-shadow-sm text-blue-deep">
+                Läser in inlägg... <SpinnerGap className="animate-spin ms-4" />
+            </div>}
 
             {/* Felmeddelande */}
             {errors.message && (
@@ -130,6 +129,7 @@ const EditPostPage = () => {
                     <WarningCircle size={24} className="text-red-500 me-2" /> {errors.message}
                 </div>
             )}
+
             <div className="bg-white rounded-lg mt-4 p-8 max-w-screen-md drop-shadow-sm">
                 <form onSubmit={handleSubmit} className="grid grid-cols-3">
 

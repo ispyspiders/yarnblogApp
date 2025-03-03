@@ -54,7 +54,7 @@ const NewPostPage = () => {
                     throw new Error(`API-anropet misslyckades med status: ${resp.status}`);
                 }
 
-                const createdPost = await resp.json();
+                await resp.json();
                 setRedirect(true);
             } catch (error) {
                 setErrors({ message: "Något gick fel vid API-anropet: " + error });
