@@ -14,7 +14,7 @@ const MainNav = () => {
     }
 
     return <>
-        <div className={`flex flex-col-reverse justify-center absolute top-0 start-0 end-14 bottom-16 z-10  bg-blue-mid drop-shadow 
+        <div className={`flex flex-col-reverse justify-center fixed top-0 start-0 end-14 bottom-16 z-10  bg-blue-mid drop-shadow 
         md:static md:flex-row md:justify-between  ${showMenu ? '' : 'hidden md:flex'}`}>
 
             <ul className={`flex flex-col justify-center p-16 md:flex-row md:justify-start md:p-2 md:ps-12 ${showMenu ? '' : 'hidden md:flex'}`}>
@@ -49,7 +49,7 @@ const MainNav = () => {
 
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-pink-mid flex p-2 ps-12 md:hidden">
+        <div className="fixed inset-x-0 bottom-0 h-16 bg-pink-mid flex p-2 ps-12 z-10 md:hidden">
             <button onClick={toggleMobileMenu}>{!showMenu && <List />}{showMenu && <ArrowLeft />}</button>
         </div>
     </>
