@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard"
 import { SpinnerGap, WarningCircle } from "@phosphor-icons/react";
 import { Post } from "../types/post.types";
+import { url } from "../types/auth.types";
 
 const HomePage = () => {
   // states
@@ -18,7 +19,7 @@ const HomePage = () => {
   const getPosts = async () => {
     try {
       setLoading(true);
-      const resp = await fetch(`http://localhost:8000/api/posts`, {
+      const resp = await fetch(`${url}/posts`, {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"

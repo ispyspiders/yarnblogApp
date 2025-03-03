@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { Post } from '../types/post.types';
+import { url } from "../types/auth.types";
 import { useAuth } from "../context/AuthContext";
 
 interface FormData {
@@ -46,7 +47,7 @@ const EditPostPage = () => {
         setLoading(true);
         try {
             setLoading(true);
-            const resp = await fetch(`http://localhost:8000/api/posts/${id}`, {
+            const resp = await fetch(`${url}/posts/${id}`, {
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json",
@@ -81,7 +82,7 @@ const EditPostPage = () => {
 
             // API anrop
             try {
-                const resp = await fetch(`http://localhost:8000/api/posts/${id}`, {
+                const resp = await fetch(`${url}/posts/${id}`, {
                     method: "PUT",
                     headers: {
                         "Accept": "application/json",
@@ -174,7 +175,6 @@ const EditPostPage = () => {
                         {errors.content && <span className="text-sm mt-2 text-red-600">{errors.content}</span>}
                     </div>
 
-
                     <button
                         type="submit"
                         disabled={isSubmitting}
@@ -190,9 +190,6 @@ const EditPostPage = () => {
                 </form>
             </div>
         </div>
-
-
-
     )
 }
 

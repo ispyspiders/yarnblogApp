@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import PostTable from "../components/PostTable";
 import { useEffect, useState } from "react";
 import { Post } from '../types/post.types';
-
-
+import { url } from "../types/auth.types";
 
 const ProfilePage = () => {
   // states
@@ -24,7 +23,7 @@ const ProfilePage = () => {
   const getPosts = async () => {
     try {
       setLoading(true);
-      const resp = await fetch(`http://localhost:8000/api/users/${user?.id}/posts`, {
+      const resp = await fetch(`${url}/users/${user?.id}/posts`, {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"

@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Logga ut
     const logout = async () => {
         try {
-            const response = await fetch("http://localhost:8000/api/logout", {
+            const response = await fetch(url + "/logout", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
 
         try {
-            const res = await fetch("http://localhost:8000/api/user", {
+            const res = await fetch(url + "/user", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import  { useState } from 'react'
 import { Post } from '../types/post.types';
 import { Link } from "react-router-dom";
 import { SpinnerGap } from '@phosphor-icons/react';
+import { url } from '../types/auth.types';
 
 interface PostTableProps {
     posts: Post[],
@@ -16,7 +17,7 @@ const PostTable = ({ posts, onDelete }: PostTableProps) => {
         if (window.confirm("Är du säker på att du vill radera detta inlägg?")) {
             try {
                 setDeleting(true);
-                const response = await fetch(`http://localhost:8000/api/posts/${postId}`, {
+                const response = await fetch(`${url}/${postId}`, {
                     method: "DELETE",
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem("yarnToken")

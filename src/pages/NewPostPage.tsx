@@ -2,6 +2,7 @@ import { ShareFat, SpinnerGap, WarningCircle } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import * as Yup from "yup";
+import { url } from "../types/auth.types";
 
 interface FormData {
     title: string,
@@ -40,7 +41,7 @@ const NewPostPage = () => {
 
             // API anrop
             try {
-                const resp = await fetch("http://localhost:8000/api/posts", {
+                const resp = await fetch(url + "/posts", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

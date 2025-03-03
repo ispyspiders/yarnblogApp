@@ -3,6 +3,7 @@ import { SpinnerGap, WarningCircle } from "@phosphor-icons/react";
 import { Post } from '../types/post.types'
 import { useParams } from "react-router-dom";
 import YarnImg from '../assets/yarn-8502110_640.jpg'
+import { url } from "../types/auth.types";
 
 
 const PostPage = () => {
@@ -22,7 +23,7 @@ const PostPage = () => {
   const getPost = async () => {
     setLoading(true);
     try {
-      const resp = await fetch(`http://localhost:8000/api/posts/${id}`, {
+      const resp = await fetch(`${url}/posts/${id}`, {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
