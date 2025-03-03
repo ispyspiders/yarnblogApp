@@ -1,4 +1,4 @@
-import { SignIn, WarningCircle } from "@phosphor-icons/react"
+import { SignIn, SpinnerGap, WarningCircle } from "@phosphor-icons/react"
 import { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const { login, user } = useAuth();
     const navigate = useNavigate();
@@ -21,11 +22,14 @@ const LoginPage = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
+        setIsSubmitting(true);
         try {
             await login({ email, password });
             navigate("/profile");
         } catch (error) {
             setError("Inloggning misslyckades! Kontrollera epost/lösenord.")
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -66,7 +70,21 @@ const LoginPage = () => {
                         />
                     </div>
 
-                    <button className="bg-blue-deep text-white ps-8 pe-4 py-2 rounded-lg flex mx-auto my-8  drop-shadow-sm hover:bg-blue-mid" type="submit"><span className="me-2">Logga in</span> <SignIn size={24} /></button>
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="bg-blue-deep text-white ps-8 pe-4 py-2 rounded-lg flex mx-auto my-8  drop-shadow-sm hover:bg-blue-mid"
+                    >
+                        {isSubmitting ?
+                            <>
+                                <span className="me-2">Loggar in</span> <SpinnerGap size={24} className="animate-spin ms-4" />
+                            </>
+                    :
+                            <>
+                                <span className="me-2">Logga in</span> <SignIn size={24} />
+                            </>
+                        }
+                    </button>
                 </form>
                 <div>
                 </div>
