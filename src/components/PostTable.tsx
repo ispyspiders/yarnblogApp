@@ -62,7 +62,7 @@ const PostTable = ({ posts, onDelete }: PostTableProps) => {
                             <tbody>
                                 {posts.map((post) => (
                                     <tr className="border-y border-pink-light hover:bg-pink-light" key={post.id}>
-                                        <td className="p-2 font-semibold">{post.title}</td>
+                                        <td className="p-2 font-semibold"><Link to={`/post/${post.id}`} className='hover:underline'>{post.title}</Link></td>
                                         <td className="p-2">{new Date(post.created_at).toLocaleDateString('sv-SE')}</td>
                                         <td className="p-2">{post.category.charAt(0).toUpperCase() + post.category.slice(1)}</td>
                                         <td className="p-2 mx-auto text-center">
