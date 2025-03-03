@@ -30,7 +30,13 @@ const BlogPage = () => {
         throw Error;
       }
       const data = await resp.json();
-      setPosts(data);
+
+      const sortedPosts = data.sort((a: Post, b: Post) => {
+        const dateA = new Date(a.created_at);
+        const dateB = new Date(b.created_at);
+        return dateB.getTime() - dateA.getTime();
+      });
+      setPosts(sortedPosts);
       setError(null);
     } catch (error) {
       console.log("Något gick fel vid inläsning av inlägg.");
@@ -55,7 +61,7 @@ const BlogPage = () => {
       }
 
       {/* Skriv ut inlägg */}
-      {posts.length > 0 ? (
+      {posts.length > 0 && !loading ? (
         posts.map((post) => (
           <PostCardSmall post={post} />
         ))
