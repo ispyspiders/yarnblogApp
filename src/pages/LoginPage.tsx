@@ -1,7 +1,7 @@
 import { SignIn, WarningCircle } from "@phosphor-icons/react"
 import { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -70,7 +70,7 @@ const LoginPage = () => {
                 </form>
                 <div>
                 </div>
-                <p className="text-center text-sm text-dust-deep">Inte medlem? <a className="underline hover:text-pink-deep" href="">Bli medlem!</a></p>
+                <p className="text-center text-sm text-dust-deep">Inte medlem? <Link to="/register" className="underline hover:text-pink-deep">Bli medlem!</Link></p>
             </div>
         </div>
     )

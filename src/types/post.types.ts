@@ -5,7 +5,10 @@ export interface Post {
     category: string,
     user_id: number,
     user_name: string,
+    image_file: string,
+    image_url: string,
     created_at: string,
+    updated_at: string,
 }
 
 export interface PostCardProps {

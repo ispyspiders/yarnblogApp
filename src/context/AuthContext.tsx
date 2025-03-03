@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, ReactNode, useEffect } from "react";
-import { User, LoginCredentials, AuthResponse, AuthContextType } from "../types/auth.types";
+import { User, LoginCredentials, AuthResponse, AuthContextType, url, RegistrationInfo } from "../types/auth.types";
+
 
 // skapa context
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -14,7 +15,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Logga in
     const login = async (credentials: LoginCredentials) => {
         try {
-            const res = await fetch("http://localhost:8000/api/login", {
+            const res = await fetch(url + "/login", {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
@@ -80,13 +81,35 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     }
 
+    // registrera användare
+    const register = async (userInfo: RegistrationInfo) => {
+        try {
+            const res = await fetch(url + "/register", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userInfo)
+            });
+            if (!res.ok) throw new Error("Registrering misslyckades!");
+            const data = await res.json() as AuthResponse;
+            console.log(data);
+            localStorage.setItem('yarnToken', data.token);
+            setUser(data.user);
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
     useEffect(() => {
         checkToken();
     }, []);
 
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, register }}>
             {children}
         </AuthContext.Provider>
     )

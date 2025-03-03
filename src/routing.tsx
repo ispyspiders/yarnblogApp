@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NewPostPage from "./pages/NewPostPage";
 import EditPostPage from "./pages/EditPostPage";
 import PostPage from "./pages/PostPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <LoginPage />
+            },
+            {
+                path: "/register",
+                element: <RegisterPage />
             },
         ]
     },
