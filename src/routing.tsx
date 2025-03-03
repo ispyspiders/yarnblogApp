@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NewPostPage from "./pages/NewPostPage";
 import EditPostPage from "./pages/EditPostPage";
+import PostPage from "./pages/PostPage";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "/blog",
                 element: <BlogPage />
+            },
+            {
+                path: "/post/:id",
+                element: <PostPage />
             },
             {
                 path: "/profile",
