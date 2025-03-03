@@ -1,12 +1,6 @@
-import React from 'react'
 import YarnImg from '../assets/yarn-8502110_640.jpg'
-import { Post } from '../types/post.types'
 import { Link } from 'react-router-dom'
-
-interface PostCardProps {
-    post: Post,
-    className?: string
-}
+import {PostCardProps} from '../types/post.types'
 
 const PostCard = ({ post, className }: PostCardProps) => {
     return (
