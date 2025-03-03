@@ -20,6 +20,9 @@ export default {
         "dust-mid": "#BBB193",
         "dust-light": "#F4E8C3",
       },
+      backgroundImage: {
+        'wave': "url('/src/assets/bg-banner.svg')",
+      }
     },
   },
   plugins: [],
