@@ -17,7 +17,7 @@ const PostTable = ({ posts, onDelete }: PostTableProps) => {
         if (window.confirm("Är du säker på att du vill radera detta inlägg?")) {
             try {
                 setDeleting(true);
-                const response = await fetch(`${url}/${postId}`, {
+                const response = await fetch(`${url}/posts/${postId}`, {
                     method: "DELETE",
                     headers: {
                         "Authorization": "Bearer " + localStorage.getItem("yarnToken")
