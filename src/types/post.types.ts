@@ -4,5 +4,6 @@ export interface Post {
     content: string,
     category: string,
     user_id: number,
+    user_name: string,
     created_at: string,
 }
