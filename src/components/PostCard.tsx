@@ -19,8 +19,8 @@ const PostCard = ({ post, className }: PostCardProps) => {
                 </div>
                 <div className='p-4 mb-6'>
                     <h3 className='text-xl font-semibold pt-4 pb-1'>{post.title}</h3>
-                    <p className='text-sm font-medium uppercase text-dust-deep pb-4'>{post.user_id}, {post.created_at}</p>
-                    <p className='col-span-2 text-ellipsis line-clamp-3 '>{post.content}</p>
+                    <p className='text-sm font-medium uppercase text-dust-deep pb-4'>{post.user_name}, {new Date(post.created_at).toLocaleDateString('sv-SE')}</p>
+                    <p className='col-span-2 text-ellipsis line-clamp-3 text-dust-deep '>{post.content}</p>
                 </div>
             </article>
         </Link>
