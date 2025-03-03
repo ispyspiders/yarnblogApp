@@ -7,3 +7,8 @@ export interface Post {
     user_name: string,
     created_at: string,
 }
+
+export interface PostCardProps {
+    post: Post,
+    className?: string
+}
