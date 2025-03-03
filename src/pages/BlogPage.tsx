@@ -60,7 +60,7 @@ const BlogPage = () => {
         ))
       ) : (
         <div className="flex items-center bg-white p-4 rounded mt-4 drop-shadow-sm text-blue-deep">
-          Läser in inlägg... <SpinnerGap className="animate-spin ms-4" />
+          Inga inlägg att läsa ut.
         </div>
       )
       }
