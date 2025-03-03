@@ -13,7 +13,12 @@ const PostCardSmall = ({ post, className }: PostCardProps) => {
                     <p className='text-ellipsis line-clamp-2 text-dust-deep '>{post.content}</p>
                 </div>
 
-                <img src={YarnImg} alt="Garn i olika färger" className='rounded hidden sm:block sm:max-h-32 sm:max-w-32' />
+                {
+                    post.image_url ?
+                        <img src={post.image_url} alt="" className='rounded hidden sm:block sm:max-h-32 sm:max-w-32 ' />
+                        :
+                        <img src={YarnImg} alt="Garn i olika färger" className='rounded hidden sm:block sm:max-h-32 sm:max-w-32' />
+                }
 
             </article>
         </Link>)
